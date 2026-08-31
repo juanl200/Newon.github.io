@@ -6,64 +6,26 @@
     <title>Newonvzla - Streaming Premium, IPTV, VPNs & Juegos | Venezuela</title>
     <meta name="description" content="Newonvzla - Cuentas premium de Netflix, Disney+, HBO Max, IPTV, Spotify, Canva Pro, VPNs y recargas de juegos online. Soporte activo en Venezuela.">
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: #050508;
-            color: white;
-            overflow-x: hidden;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background: #050508; color: white; overflow-x: hidden; }
+        .font-brand { font-family: 'Orbitron', sans-serif; }
 
-        .font-brand {
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        /* Fondo Animado y Partículas */
         .bg-cinematic {
             background: radial-gradient(ellipse at top, #0a1628 0%, #050508 50%, #000000 100%);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none;
         }
 
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
+        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; pointer-events: none; }
         .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(59, 130, 246, 0.5);
-            border-radius: 50%;
-            animation: float-particle 15s infinite linear;
+            position: absolute; width: 2px; height: 2px; background: rgba(59, 130, 246, 0.5);
+            border-radius: 50%; animation: float-particle 15s infinite linear;
         }
-
         @keyframes float-particle {
             0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
             10% { opacity: 1; }
@@ -71,74 +33,32 @@
             100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
         }
 
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.3;
-            z-index: -1;
-            animation: pulse-orb 8s infinite ease-in-out;
-            pointer-events: none;
-        }
-
+        .orb { position: fixed; border-radius: 50%; filter: blur(100px); opacity: 0.3; z-index: -1; animation: pulse-orb 8s infinite ease-in-out; pointer-events: none; }
         .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, #3b82f6 0%, transparent 70%); top: -200px; right: -200px; }
         .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #1d4ed8 0%, transparent 70%); bottom: -100px; left: -100px; animation-delay: 2s; }
+        @keyframes pulse-orb { 0%, 100% { transform: scale(1); opacity: 0.3; } 50% { transform: scale(1.2); opacity: 0.5; } }
 
-        @keyframes pulse-orb {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.2); opacity: 0.5; }
-        }
-
-        /* Estilos de Tarjetas */
         .metallic-card {
             background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(20px); border: 1px solid rgba(59, 130, 246, 0.2);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;
         }
-
         .metallic-card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.5); transform: translateY(-5px);
             box-shadow: 0 20px 50px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .btn-brand {
             background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
             border: 1px solid rgba(96, 165, 250, 0.3);
-            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2); transition: all 0.3s;
         }
+        .btn-brand:hover { transform: scale(1.03); box-shadow: 0 0 30px rgba(37, 99, 235, 0.5); }
 
-        .btn-brand:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
-        }
-
-        .metallic-text {
-            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 50%, #ffffff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .vzla-accent {
-            background: linear-gradient(90deg, #fcd34d 0%, #3b82f6 50%, #ef4444 100%);
-            height: 3px;
-            width: 60px;
-            margin: 0 auto;
-            border-radius: 2px;
-        }
+        .metallic-text { background: linear-gradient(135deg, #ffffff 0%, #94a3b8 50%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-text { background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .vzla-accent { background: linear-gradient(90deg, #fcd34d 0%, #3b82f6 50%, #ef4444 100%); height: 3px; width: 60px; margin: 0 auto; border-radius: 2px; }
 
         /* Logos Personalizados */
         .icon-netflix { background: linear-gradient(135deg, #e50914, #8b0000); }
@@ -162,28 +82,13 @@
         .icon-nordvpn { background: linear-gradient(135deg, #3b82f6, #1e40af); }
         .icon-games { background: linear-gradient(135deg, #ec4899, #be185d); }
 
-        /* Estilos Activos y Menús */
-        .category-tab.active {
-            background: #2563eb !important;
-            color: white !important;
-            border-color: #60a5fa !important;
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
-        }
-
-        .modal-backdrop {
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
-        }
-
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-            background: rgba(5, 5, 8, 0.98);
-            backdrop-filter: blur(20px);
-        }
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
+        .category-tab.active { background: #2563eb !important; color: white !important; border-color: #60a5fa !important; box-shadow: 0 0 15px rgba(37, 99, 235, 0.4); }
+        .modal-backdrop { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease-in-out; background: rgba(5, 5, 8, 0.98); backdrop-filter: blur(20px); }
+        .mobile-menu.active { transform: translateX(0); }
+        
+        .price-list-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .price-list-item:last-child { border-bottom: none; }
 
         /* Testimonios y FAQ */
         .testimonial-card {
@@ -192,12 +97,10 @@
             border: 1px solid rgba(59, 130, 246, 0.2);
             transition: all 0.3s ease;
         }
-
         .testimonial-card:hover {
             border-color: rgba(59, 130, 246, 0.5);
             transform: translateY(-5px);
         }
-
         .star-rating { color: #fbbf24; letter-spacing: 2px; }
 
         .faq-item {
@@ -214,36 +117,32 @@
             overflow: hidden;
             transition: max-height 0.35s ease-out;
         }
-        .faq-item.active .faq-content {
-            max-height: 300px;
-        }
+        .faq-item.active .faq-content { max-height: 300px; }
         .faq-icon { transition: transform 0.3s; }
         .faq-item.active .faq-icon { transform: rotate(180deg); }
     </style>
 </head>
 <body class="selection:bg-blue-600 selection:text-white">
 
-    <!-- Fondos -->
     <div class="bg-cinematic"></div>
     <div class="particles" id="particles"></div>
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
-    <!-- Navegación -->
-    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 border-b border-white/5 bg-black/40 backdrop-blur-md" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
+            <div class="flex justify-between items-center h-20">
                 <div class="cursor-pointer" onclick="window.scrollTo(0,0)">
                     <span class="font-brand text-2xl font-bold metallic-text tracking-wider">NEWONVZLA</span>
                     <div class="text-[10px] text-blue-400 tracking-[0.3em] uppercase font-bold">Servicios Digitales</div>
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#servicios" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium tracking-wide uppercase">Servicios</a>
+                    <a href="#servicios" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium tracking-wide uppercase">Catálogo y Precios</a>
                     <a href="#testimonios" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium tracking-wide uppercase">Testimonios</a>
-                    <a href="#faq" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium tracking-wide uppercase">FAQ</a>
-                    <a href="https://wa.link/q1jdcs" target="_blank" class="btn-brand px-6 py-3 rounded-full text-white font-bold text-sm tracking-wide uppercase">
-                        Pedir por WhatsApp
+                    <a href="#faq" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium tracking-wide uppercase">Dudas</a>
+                    <a href="https://wa.link/q1jdcs" target="_blank" class="btn-brand px-6 py-2.5 rounded-full text-white font-bold text-sm tracking-wide uppercase">
+                        WhatsApp Directo
                     </a>
                 </div>
 
@@ -255,452 +154,535 @@
             </div>
         </div>
 
-        <!-- Menú Móvil -->
         <div class="mobile-menu fixed top-0 right-0 w-80 h-full z-50 p-8 border-l border-blue-500/20" id="mobile-menu">
             <button class="absolute top-6 right-6 text-gray-400 hover:text-white" id="close-menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <div class="flex flex-col space-y-6 mt-16">
-                <a href="#servicios" class="text-gray-300 hover:text-blue-400 text-lg font-medium mobile-link">Catálogo</a>
+                <a href="#servicios" class="text-gray-300 hover:text-blue-400 text-lg font-medium mobile-link">Catálogo de Precios</a>
                 <a href="#testimonios" class="text-gray-300 hover:text-blue-400 text-lg font-medium mobile-link">Testimonios</a>
-                <a href="#faq" class="text-gray-300 hover:text-blue-400 text-lg font-medium mobile-link">FAQ</a>
-                <a href="https://wa.link/q1jdcs" target="_blank" class="btn-brand px-6 py-4 rounded-full text-white font-bold text-center">Contactar Asesor</a>
+                <a href="#faq" class="text-gray-300 hover:text-blue-400 text-lg font-medium mobile-link">Preguntas Frecuentes</a>
+                <a href="https://wa.link/q1jdcs" target="_blank" class="btn-brand px-6 py-4 rounded-full text-white font-bold text-center">Hablar con Soporte</a>
             </div>
         </div>
     </nav>
 
-    <!-- Inicio / Hero -->
-    <section class="relative min-h-screen flex items-center justify-center pt-24 px-4 overflow-hidden">
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center pt-24 px-4 overflow-hidden">
         <div class="max-w-6xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 mb-6">
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 mb-6 mt-10">
                 <span class="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span>
-                <span class="text-sm text-blue-300 tracking-wide">+2,500 clientes en Venezuela 🇻🇪</span>
+                <span class="text-sm text-blue-300 tracking-wide">Lista de Precios Oficial 2026 🇻🇪</span>
             </div>
             
             <h1 class="font-brand text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-none tracking-tight">
                 <span class="block metallic-text mb-2">NEWONVZLA</span>
-                <span class="block text-xl sm:text-3xl md:text-4xl font-medium text-gray-400 mt-3 tracking-[0.2em] uppercase">Streaming & Cuentas Digitales</span>
+                <span class="block text-xl sm:text-3xl md:text-4xl font-medium text-gray-400 mt-3 tracking-[0.2em] uppercase">Tu Entretenimiento</span>
             </h1>
             
             <div class="vzla-accent mb-8"></div>
             
-            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
-                Cine, series, TV en vivo, música, herramientas de edición, VPNs y recargas de juegos al instante con garantía total y soporte 24/7.
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                Cuentas directas, renovables y sin caídas. Selecciona tu plan, verifica los precios y actívalo al instante por WhatsApp.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-                <a href="#servicios" class="btn-brand px-10 py-5 rounded-full text-white font-bold text-base flex items-center space-x-3 group shadow-2xl shadow-blue-500/30">
-                    <span>Explorar los 20 Servicios</span>
-                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#servicios" class="btn-brand px-10 py-4 rounded-full text-white font-bold text-base flex items-center space-x-3 shadow-2xl shadow-blue-500/30 w-full sm:w-auto justify-center">
+                    <span>Ver Precios y Planes</span>
                 </a>
-                <a href="https://wa.link/q1jdcs" target="_blank" class="px-10 py-5 rounded-full border border-blue-500/30 text-white font-semibold hover:bg-blue-500/10 transition-all">
-                    Consultar Precios en Bs / USDT
-                </a>
-            </div>
-
-            <!-- Estadísticas -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto border-t border-blue-500/20 pt-8">
-                <div>
-                    <div class="text-3xl font-brand font-bold text-white mb-1 counter" data-target="20">0</div>
-                    <div class="text-xs text-blue-400 uppercase tracking-wider">Plataformas</div>
-                </div>
-                <div>
-                    <div class="text-3xl font-brand font-bold text-white mb-1 counter" data-target="99">0</div>
-                    <div class="text-xs text-blue-400 uppercase tracking-wider">% Uptime</div>
-                </div>
-                <div>
-                    <div class="text-3xl font-brand font-bold text-white mb-1 counter" data-target="5">0</div>
-                    <div class="text-xs text-blue-400 uppercase tracking-wider">Min Entrega</div>
-                </div>
-                <div>
-                    <div class="text-3xl font-brand font-bold text-white mb-1">24/7</div>
-                    <div class="text-xs text-blue-400 uppercase tracking-wider">Soporte WhatsApp</div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección de Servicios -->
-    <section id="servicios" class="py-24 px-4 relative">
+    <!-- Servicios y Precios -->
+    <section id="servicios" class="py-20 px-4 relative">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="font-brand text-3xl md:text-5xl font-black mb-4 tracking-tight">Elige tu <span class="gradient-text">Servicio</span></h2>
-                <p class="text-gray-400 text-base max-w-2xl mx-auto">Filtra por categoría y solicita el tuyo directamente en nuestro WhatsApp.</p>
+            <div class="text-center mb-10">
+                <h2 class="font-brand text-3xl md:text-5xl font-black mb-4 tracking-tight">Lista de <span class="gradient-text">Precios</span></h2>
+                <p class="text-gray-400 text-base max-w-2xl mx-auto">Elige la categoría para ver las opciones disponibles y sus costos exactos.</p>
                 <div class="vzla-accent mt-4"></div>
             </div>
 
-            <!-- Filtros de Categoría -->
-            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12 max-w-5xl mx-auto">
-                <button onclick="filterServices('all', this)" class="category-tab active px-5 py-2.5 rounded-full border border-blue-500/30 text-sm font-semibold transition-all">
-                    Todos (20)
-                </button>
-                <button onclick="filterServices('cine', this)" class="category-tab px-5 py-2.5 rounded-full bg-slate-900/60 border border-blue-500/20 text-gray-300 hover:text-white text-sm font-semibold transition-all">
-                    🎬 Cine & Series (10)
-                </button>
-                <button onclick="filterServices('musica', this)" class="category-tab px-5 py-2.5 rounded-full bg-slate-900/60 border border-blue-500/20 text-gray-300 hover:text-white text-sm font-semibold transition-all">
-                    🎵 Música & Video (2)
-                </button>
-                <button onclick="filterServices('tv', this)" class="category-tab px-5 py-2.5 rounded-full bg-slate-900/60 border border-blue-500/20 text-gray-300 hover:text-white text-sm font-semibold transition-all">
-                    📺 TV Online / IPTV (3)
-                </button>
-                <button onclick="filterServices('editor', this)" class="category-tab px-5 py-2.5 rounded-full bg-slate-900/60 border border-blue-500/20 text-gray-300 hover:text-white text-sm font-semibold transition-all">
-                    🎨 Edición (2)
-                </button>
-                <button onclick="filterServices('vpn', this)" class="category-tab px-5 py-2.5 rounded-full bg-slate-900/60 border border-blue-500/20 text-gray-300 hover:text-white text-sm font-semibold transition-all">
-                    🛡️ VPN (2)
-                </button>
-                <button onclick="filterServices('juegos', this)" class="category-tab px-5 py-2.5 rounded-full bg-slate-900/60 border border-blue-500/20 text-gray-300 hover:text-white text-sm font-semibold transition-all">
-                    🎮 Juegos (1)
-                </button>
+            <!-- Filtros -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 max-w-5xl mx-auto">
+                <button onclick="filterServices('all', this)" class="category-tab active px-5 py-2.5 rounded-full border border-blue-500/30 text-sm font-semibold transition-all">Todos (20)</button>
+                <button onclick="filterServices('cine', this)" class="category-tab px-5 py-2.5 rounded-full bg-slate-900/60 border border-blue-500/20 text-gray-300 hover:text-white text-sm font-semibold transition-all">🎬 Cine & Series</button>
+                <button onclick="filterServices('musica', this)" class="category-tab px-5 py-2.5 rounded-full bg-slate-900/60 border border-blue-500/20 text-gray-300 hover:text-white text-sm font-semibold transition-all">🎵 Música & Video</button>
+                <button onclick="filterServices('tv', this)" class="category-tab px-5 py-2.5 rounded-full bg-slate-900/60 border border-blue-500/20 text-gray-300 hover:text-white text-sm font-semibold transition-all">📺 IPTV Completo</button>
+                <button onclick="filterServices('editor', this)" class="category-tab px-5 py-2.5 rounded-full bg-slate-900/60 border border-blue-500/20 text-gray-300 hover:text-white text-sm font-semibold transition-all">🎨 Editores</button>
+                <button onclick="filterServices('vpn', this)" class="category-tab px-5 py-2.5 rounded-full bg-slate-900/60 border border-blue-500/20 text-gray-300 hover:text-white text-sm font-semibold transition-all">🛡️ VPN</button>
+                <button onclick="filterServices('juegos', this)" class="category-tab px-5 py-2.5 rounded-full bg-slate-900/60 border border-blue-500/20 text-gray-300 hover:text-white text-sm font-semibold transition-all">🎮 Juegos</button>
             </div>
 
-            <!-- Grid de 20 Servicios -->
+            <!-- Grid de Tarjetas (20 Items) -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid">
 
                 <!-- 1. Netflix -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="cine">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="cine">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-netflix flex items-center justify-center mb-5 text-2xl font-black text-white shadow-lg">N</div>
-                        <span class="text-xs text-red-400 font-bold uppercase tracking-wider">Cine & Series</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Netflix</h3>
-                        <p class="text-gray-400 text-sm mb-4">Pantalla con PIN privado o cuenta completa en calidad Ultra HD 4K.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Sin bloqueos de hogar</li>
-                            <li>✓ Perfil privado individual</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-netflix flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">N</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Netflix</h3>
+                                <span class="text-xs text-red-400 font-bold uppercase tracking-wider">🖥️📱 Red Hogar</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <div><span class="text-gray-300 block">1 Pantalla</span><span class="text-xs text-gray-500">Compartida / Con código (viaje)</span></div>
+                                <span class="font-bold text-green-400 text-lg">$3.5</span>
+                            </div>
+                            <div class="price-list-item">
+                                <div><span class="text-gray-300 block">1 Pantalla</span><span class="text-xs text-gray-500">No pide código</span></div>
+                                <span class="font-bold text-green-400 text-lg">$5.3</span>
+                            </div>
+                            <div class="price-list-item">
+                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
+                                <span class="font-bold text-green-400 text-lg">$13.5</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Netflix')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('Netflix')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Netflix</button>
                 </div>
 
-                <!-- 2. Disney+ -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="cine">
+                <!-- 2. Disney+ Premium -->
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="cine">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-disney flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">D+</div>
-                        <span class="text-xs text-blue-400 font-bold uppercase tracking-wider">Cine & Deportes</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Disney+</h3>
-                        <p class="text-gray-400 text-sm mb-4">Marvel, Pixar, Star Wars y todos los deportes en vivo con ESPN.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Deportes en directo por ESPN</li>
-                            <li>✓ Calidad 4K disponible</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-disney flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">D+</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Disney+ Premium</h3>
+                                <span class="text-xs text-blue-400 font-bold uppercase tracking-wider">🖥️📱 Deportes + Cine</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <span class="text-gray-300">1 Pantalla</span>
+                                <span class="font-bold text-green-400 text-lg">$3.3</span>
+                            </div>
+                            <div class="price-list-item">
+                                <span class="text-gray-300">Cuenta Completa</span>
+                                <span class="font-bold text-green-400 text-lg">$14.0</span>
+                            </div>
+                            <div class="price-list-item">
+                                <div><span class="text-gray-300 font-semibold block">Cuenta Completa</span><span class="text-xs text-blue-300">A tu correo</span></div>
+                                <span class="font-bold text-green-400 text-lg">$17.0</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Disney+')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('Disney+ Premium')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Disney+</button>
                 </div>
 
                 <!-- 3. Prime Video -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="cine">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="cine">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-prime flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">PV</div>
-                        <span class="text-xs text-cyan-400 font-bold uppercase tracking-wider">Cine & Series</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Prime Video</h3>
-                        <p class="text-gray-400 text-sm mb-4">Amazon Originals, películas de estreno y series taquilleras.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Cuenta privada / pantalla</li>
-                            <li>✓ Activación rápida</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-prime flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">PV</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Prime Video</h3>
+                                <span class="text-xs text-cyan-400 font-bold uppercase tracking-wider">🖥️📱 Series y Películas</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <span class="text-gray-300">1 Pantalla</span>
+                                <span class="font-bold text-green-400 text-lg">$1.4</span>
+                            </div>
+                            <div class="price-list-item">
+                                <span class="text-gray-300">Cuenta Completa</span>
+                                <span class="font-bold text-green-400 text-lg">$4.0</span>
+                            </div>
+                            <div class="price-list-item">
+                                <div><span class="text-gray-300 font-semibold block">Cuenta Completa</span><span class="text-xs text-cyan-300">Renovable</span></div>
+                                <span class="font-bold text-green-400 text-lg">$5.0</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Prime Video')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('Prime Video')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Prime Video</button>
                 </div>
 
-                <!-- 4. Vix+ -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="cine">
+                <!-- 4. Vix -->
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="cine">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-vix flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">VIX</div>
-                        <span class="text-xs text-orange-400 font-bold uppercase tracking-wider">Cine & Novelas</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Vix+ Premium</h3>
-                        <p class="text-gray-400 text-sm mb-4">Telenovelas exclusivas, fútbol en vivo (Liga MX) y cine en español.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Contenido 100% en español</li>
-                            <li>✓ Partidos de fútbol en vivo</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-vix flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">VIX</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Vix+</h3>
+                                <span class="text-xs text-orange-400 font-bold uppercase tracking-wider">🖥️📱 Contenido Latino</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <span class="text-gray-300">1 Pantalla</span>
+                                <span class="font-bold text-green-400 text-lg">$1.0</span>
+                            </div>
+                            <div class="price-list-item">
+                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
+                                <span class="font-bold text-green-400 text-lg">$4.0</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Vix+ Premium')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('Vix+')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Vix+</button>
                 </div>
 
                 <!-- 5. Paramount+ -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="cine">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="cine">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-paramount flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">P+</div>
-                        <span class="text-xs text-blue-400 font-bold uppercase tracking-wider">Cine & Deportes</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Paramount+</h3>
-                        <p class="text-gray-400 text-sm mb-4">Series de Showtime, Nickelodeon y la Premier League en directo.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Transmisiones deportivas</li>
-                            <li>✓ Contenido para toda la familia</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-paramount flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">P+</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Paramount+</h3>
+                                <span class="text-xs text-blue-400 font-bold uppercase tracking-wider">🖥️📱 Deportes y Cine</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <span class="text-gray-300">1 Pantalla</span>
+                                <span class="font-bold text-green-400 text-lg">$2.0</span>
+                            </div>
+                            <div class="price-list-item">
+                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
+                                <span class="font-bold text-green-400 text-lg">$7.0</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Paramount+')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('Paramount+')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Paramount+</button>
                 </div>
 
                 <!-- 6. Crunchyroll -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="cine">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="cine">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-crunchy flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">CR</div>
-                        <span class="text-xs text-amber-400 font-bold uppercase tracking-wider">Anime & Simulcast</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Crunchyroll</h3>
-                        <p class="text-gray-400 text-sm mb-4">El mayor catálogo de anime, estrenos simultáneos y sin anuncios.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Plan Mega Fan disponible</li>
-                            <li>✓ Descarga para ver offline</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-crunchy flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">CR</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Crunchyroll</h3>
+                                <span class="text-xs text-amber-400 font-bold uppercase tracking-wider">🖥️📱 Anime & Simulcast</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <span class="text-gray-300">1 Pantalla</span>
+                                <span class="font-bold text-green-400 text-lg">$1.2</span>
+                            </div>
+                            <div class="price-list-item">
+                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
+                                <span class="font-bold text-green-400 text-lg">$4.5</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Crunchyroll Mega Fan')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('Crunchyroll')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Crunchyroll</button>
                 </div>
 
-                <!-- 7. HBO Max / Max -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="cine">
+                <!-- 7. HBO Max -->
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="cine">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-hbo flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">HBO</div>
-                        <span class="text-xs text-purple-400 font-bold uppercase tracking-wider">Cine & Series</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">HBO Max (Max)</h3>
-                        <p class="text-gray-400 text-sm mb-4">Producciones HBO, Warner Bros, DC y Champions League en vivo.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Champions League en vivo</li>
-                            <li>✓ Perfil privado individual</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-hbo flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">HBO</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">HBO Max (Max)</h3>
+                                <span class="text-xs text-purple-400 font-bold uppercase tracking-wider">🖥️📱 Standard y Platinum</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="text-xs font-bold text-purple-300 mb-2 border-b border-white/10 pb-1">MAX STANDARD</div>
+                            <div class="price-list-item pt-0"><span class="text-gray-300">1 Pantalla</span><span class="font-bold text-green-400">$2.0</span></div>
+                            <div class="price-list-item"><span class="text-gray-300">Cuenta Completa</span><span class="font-bold text-green-400">$5.5</span></div>
+                            
+                            <div class="text-xs font-bold text-purple-300 mb-2 mt-3 border-b border-white/10 pb-1">MAX PLATINUM</div>
+                            <div class="price-list-item pt-0"><span class="text-gray-300">1 Pantalla</span><span class="font-bold text-green-400">$2.5</span></div>
+                            <div class="price-list-item"><span class="text-gray-300">Cuenta Completa</span><span class="font-bold text-green-400">$9.0</span></div>
+                        </div>
                     </div>
-                    <button onclick="selectService('HBO Max')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('HBO Max')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar HBO Max</button>
                 </div>
 
-                <!-- 8. Apple TV+ -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="cine">
+                <!-- 8. Apple TV -->
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="cine">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-apple flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">TV</div>
-                        <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">Series Exclusivas</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Apple TV+</h3>
-                        <p class="text-gray-400 text-sm mb-4">Series y películas originales con la más alta tasa de bits y calidad 4K.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Calidad de imagen superior</li>
-                            <li>✓ Compatible con Smart TV & Android</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-apple flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">TV</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Apple TV+</h3>
+                                <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">🖥️📱 Series Originales</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <span class="text-gray-300">1 Pantalla</span>
+                                <span class="font-bold text-green-400 text-lg">$2.5</span>
+                            </div>
+                            <div class="price-list-item">
+                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
+                                <span class="font-bold text-green-400 text-lg">$4.5</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Apple TV+')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('Apple TV+')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Apple TV</button>
                 </div>
 
                 <!-- 9. Viki Rakuten -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="cine">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="cine">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-viki flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">VIKI</div>
-                        <span class="text-xs text-sky-400 font-bold uppercase tracking-wider">Doramas & Asia</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Viki Rakuten</h3>
-                        <p class="text-gray-400 text-sm mb-4">Dramas coreanos, chinos, japoneses y shows asiáticos en HD subtitulados.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Acceso a Viki Pass Standard/Plus</li>
-                            <li>✓ Sin publicidad y en HD</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-viki flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">VIKI</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Viki Rakuten</h3>
+                                <span class="text-xs text-sky-400 font-bold uppercase tracking-wider">🖥️📱 Doramas & Asia</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <span class="text-gray-300">1 Pantalla</span>
+                                <span class="font-bold text-green-400 text-lg">$2.7</span>
+                            </div>
+                            <div class="price-list-item">
+                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
+                                <span class="font-bold text-green-400 text-lg">$5.0</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Viki Rakuten Pass')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('Viki Rakuten')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Viki</button>
                 </div>
 
                 <!-- 10. Universal+ -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="cine">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="cine">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-universal flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">U+</div>
-                        <span class="text-xs text-blue-300 font-bold uppercase tracking-wider">Cine & Comedia</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Universal+</h3>
-                        <p class="text-gray-400 text-sm mb-4">Canales Universal Premiere, Cinema, Crime, Comedy y Reality en vivo.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Canales premium en vivo</li>
-                            <li>✓ Series y películas on-demand</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-universal flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">U+</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Universal+</h3>
+                                <span class="text-xs text-blue-300 font-bold uppercase tracking-wider">🖥️📱 Canales y Series</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <span class="text-gray-300">1 Pantalla</span>
+                                <span class="font-bold text-green-400 text-lg">$1.8</span>
+                            </div>
+                            <div class="price-list-item">
+                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
+                                <span class="font-bold text-green-400 text-lg">$5.0</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Universal+')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('Universal+')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Universal+</button>
                 </div>
 
                 <!-- 11. Canva Pro -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="editor">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="editor">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-canva flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">CP</div>
-                        <span class="text-xs text-teal-400 font-bold uppercase tracking-wider">Editor & Diseño</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Canva Pro</h3>
-                        <p class="text-gray-400 text-sm mb-4">Plantillas premium, borrador de fondos y herramientas mágicas de IA.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Activación directa a tu correo</li>
-                            <li>✓ Millones de recursos premium</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-canva flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">CP</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Canva Pro</h3>
+                                <span class="text-xs text-teal-400 font-bold uppercase tracking-wider">🖥️📱 Diseño y Edición</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <div><span class="text-gray-300 block">Individual 1 Mes</span></div>
+                                <span class="font-bold text-green-400 text-lg">$1.5</span>
+                            </div>
+                            <div class="price-list-item">
+                                <div><span class="text-gray-300 font-semibold block">Individual 3 Meses</span></div>
+                                <span class="font-bold text-green-400 text-lg">$3.5</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Canva Pro')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('Canva Pro')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Canva Pro</button>
                 </div>
 
-                <!-- 12. CapCut Pro -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="editor">
+                <!-- 12. CapCut -->
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="editor">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-capcut flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">CC</div>
-                        <span class="text-xs text-gray-300 font-bold uppercase tracking-wider">Editor de Video</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">CapCut Pro</h3>
-                        <p class="text-gray-400 text-sm mb-4">Efectos pro, subtítulos automáticos por IA y exportación sin marcas de agua.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Funciones Pro de PC y Móvil</li>
-                            <li>✓ Ideal para creadores de contenido</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-capcut flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">CC</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">CapCut Pro</h3>
+                                <span class="text-xs text-gray-300 font-bold uppercase tracking-wider">🖥️📱 Editor de Video</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
+                                <span class="font-bold text-green-400 text-lg">$5.3</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('CapCut Pro')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('CapCut Pro')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar CapCut</button>
                 </div>
 
                 <!-- 13. Spotify Premium -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="musica">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="musica">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-spotify flex items-center justify-center mb-5 text-2xl font-black text-white shadow-lg">
-                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-spotify flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">🎧</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Spotify Premium</h3>
+                                <span class="text-xs text-green-400 font-bold uppercase tracking-wider">🖥️📱🎵 Música HD</span>
+                            </div>
                         </div>
-                        <span class="text-xs text-green-400 font-bold uppercase tracking-wider">Música & Audio</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Spotify Premium</h3>
-                        <p class="text-gray-400 text-sm mb-4">Cero anuncios, saltos ilimitados y descarga de playlists offline.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Activación a tu correo personal</li>
-                            <li>✓ Audio en máxima calidad</li>
-                        </ul>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <div><span class="text-gray-300 font-semibold block">1 Mes</span><span class="text-xs text-green-300">A tu correo personal</span></div>
+                                <span class="font-bold text-green-400 text-lg">$4.8</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Spotify Premium')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('Spotify Premium')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Spotify</button>
                 </div>
 
                 <!-- 14. YouTube Premium -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="musica">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="musica">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-youtube flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">YT</div>
-                        <span class="text-xs text-red-400 font-bold uppercase tracking-wider">Música & Video</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">YouTube Premium</h3>
-                        <p class="text-gray-400 text-sm mb-4">Sin anuncios en videos, reproducción en segundo plano y YouTube Music.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Activación a tu cuenta Gmail</li>
-                            <li>✓ Compatible con Smart TV</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-youtube flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">YT</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">YouTube Premium</h3>
+                                <span class="text-xs text-red-400 font-bold uppercase tracking-wider">🖥️📱🎧 Video sin Ads</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <div><span class="text-gray-300 block">Cuenta Completa 1 Mes</span><span class="text-xs text-red-300">A tu correo</span></div>
+                                <span class="font-bold text-green-400 text-lg">$3.5</span>
+                            </div>
+                            <div class="price-list-item">
+                                <div><span class="text-gray-300 block">Cuentas Viejas 1 Mes</span><span class="text-xs text-red-300">A tu correo</span></div>
+                                <span class="font-bold text-green-400 text-lg">$5.0</span>
+                            </div>
+                            <div class="price-list-item">
+                                <div><span class="text-gray-300 font-semibold block">Cuenta Completa 3 Meses</span><span class="text-xs text-red-300">A tu correo</span></div>
+                                <span class="font-bold text-green-400 text-lg">$9.0</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('YouTube Premium')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('YouTube Premium')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar YouTube</button>
                 </div>
 
                 <!-- 15. NewonIPTV -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="tv">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="tv">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-iptv flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">IPTV</div>
-                        <span class="text-xs text-indigo-400 font-bold uppercase tracking-wider">TV en Vivo</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">NewonIPTV</h3>
-                        <p class="text-gray-400 text-sm mb-4">Nuestra lista premium con canales en vivo, eventos deportivos PPV y películas.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ +1,500 Canales sin congelamientos</li>
-                            <li>✓ Guía EPG y soporte dedicado</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-iptv flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">TV</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">NewonIPTV</h3>
+                                <span class="text-xs text-indigo-400 font-bold uppercase tracking-wider">1500 Canales + VOD</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <div><span class="text-gray-300 font-semibold block">Para 3 Dispositivos</span><span class="text-xs text-gray-400">Canales, Películas y Estrenos</span></div>
+                                <span class="font-bold text-green-400 text-lg">$5.0</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('NewonIPTV')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('NewonIPTV')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar NewonIPTV</button>
                 </div>
 
                 <!-- 16. Telelatino -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="tv">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="tv">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-telelatino flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">TL</div>
-                        <span class="text-xs text-amber-400 font-bold uppercase tracking-wider">TV & Películas</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Telelatino</h3>
-                        <p class="text-gray-400 text-sm mb-4">Canales latinos en vivo, series actualizadas y películas en español.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Compatible con TV Box y Celular</li>
-                            <li>✓ Excelente estabilidad</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-telelatino flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">TL</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Telelatino</h3>
+                                <span class="text-xs text-amber-400 font-bold uppercase tracking-wider">1500 Canales + VOD</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <div><span class="text-gray-300 font-semibold block">Para 3 Dispositivos</span><span class="text-xs text-gray-400">Canales, Películas y Series</span></div>
+                                <span class="font-bold text-green-400 text-lg">$4.5</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Telelatino')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('Telelatino')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Telelatino</button>
                 </div>
 
                 <!-- 17. FlujoTV -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="tv">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="tv">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-flujotv flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">FTV</div>
-                        <span class="text-xs text-cyan-400 font-bold uppercase tracking-wider">TV & Deportes</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">FlujoTV</h3>
-                        <p class="text-gray-400 text-sm mb-4">Transmisión fluida de canales internacionales, deportes y eventos premium.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Servidores rápidos y estables</li>
-                            <li>✓ Canales de fútbol y ligas top</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-flujotv flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">FTV</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">FlujoTV</h3>
+                                <span class="text-xs text-cyan-400 font-bold uppercase tracking-wider">1800 Canales +18</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <span class="text-gray-300">Para 1 Dispositivo</span>
+                                <span class="font-bold text-green-400 text-lg">$3.8</span>
+                            </div>
+                            <div class="price-list-item">
+                                <div><span class="text-gray-300 font-semibold block">Para 3 Dispositivos</span><span class="text-xs text-gray-400">Pelis, Series y Contenido +18</span></div>
+                                <span class="font-bold text-green-400 text-lg">$8.0</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('FlujoTV')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('FlujoTV')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar FlujoTV</button>
                 </div>
 
                 <!-- 18. Surfshark VPN -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="vpn">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="vpn">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-surfshark flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">🦈</div>
-                        <span class="text-xs text-teal-400 font-bold uppercase tracking-wider">VPN & Seguridad</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Surfshark VPN</h3>
-                        <p class="text-gray-400 text-sm mb-4">Navegación anónima, cambio de país para desbloquear catálogos y alta velocidad.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Desbloqueo de streaming global</li>
-                            <li>✓ Conexión encriptada y segura</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-surfshark flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">🦈</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Surfshark VPN</h3>
+                                <span class="text-xs text-teal-400 font-bold uppercase tracking-wider">Seguridad Global</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <span class="text-gray-300 font-semibold">Para 2 Dispositivos</span>
+                                <span class="font-bold text-green-400 text-lg">$3.5</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Surfshark VPN')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('Surfshark VPN')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Surfshark</button>
                 </div>
 
                 <!-- 19. NordVPN -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="vpn">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="vpn">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-nordvpn flex items-center justify-center mb-5 text-xl font-black text-white shadow-lg">🛡️</div>
-                        <span class="text-xs text-blue-400 font-bold uppercase tracking-wider">VPN & Privacidad</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">NordVPN</h3>
-                        <p class="text-gray-400 text-sm mb-4">La VPN más rápida y segura del mercado con miles de servidores mundiales.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Protección contra rastreo</li>
-                            <li>✓ Servidores de alta velocidad</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-nordvpn flex items-center justify-center text-xl font-black text-white shadow-lg mr-4">🛡️</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">NordVPN</h3>
+                                <span class="text-xs text-blue-400 font-bold uppercase tracking-wider">Máxima Privacidad</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item">
+                                <span class="text-gray-300 font-semibold">Para 5 Dispositivos</span>
+                                <span class="font-bold text-blue-300 text-sm uppercase">PREGUNTAR</span>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="selectService('NordVPN')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Disponibilidad
-                    </button>
+                    <button onclick="selectService('NordVPN')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Consultar NordVPN</button>
                 </div>
 
                 <!-- 20. Recargas de Juegos Online -->
-                <div class="service-item metallic-card rounded-3xl p-7 flex flex-col justify-between" data-category="juegos">
+                <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="juegos">
                     <div>
-                        <div class="w-14 h-14 rounded-2xl icon-games flex items-center justify-center mb-5 text-2xl font-black text-white shadow-lg">🎮</div>
-                        <span class="text-xs text-pink-400 font-bold uppercase tracking-wider">Gaming & Recargas</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-2">Recargas de Juegos</h3>
-                        <p class="text-gray-400 text-sm mb-4">Diamantes de Free Fire, Robux, CP de Call of Duty, Pases de Batalla y más.</p>
-                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
-                            <li>✓ Recargas con solo el ID de jugador</li>
-                            <li>✓ Acreditación inmediata</li>
-                        </ul>
+                        <div class="flex items-center mb-5">
+                            <div class="w-12 h-12 rounded-xl icon-games flex items-center justify-center text-2xl font-black text-white shadow-lg mr-4">🎮</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Recargas de Juegos</h3>
+                                <span class="text-xs text-pink-400 font-bold uppercase tracking-wider">Recargas por ID</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
+                            <div class="price-list-item"><span class="text-gray-300">FreeFire</span><span class="font-bold text-green-400">desde $1.4</span></div>
+                            <div class="price-list-item"><span class="text-gray-300">Call of Duty Mobile</span><span class="font-bold text-green-400">desde $1.75</span></div>
+                            <div class="price-list-item"><span class="text-gray-300">League of Legends</span><span class="font-bold text-green-400">desde $5.5</span></div>
+                            <div class="price-list-item"><span class="text-gray-300">VALORANT</span><span class="font-bold text-green-400">desde $5.6</span></div>
+                            <div class="price-list-item"><span class="text-gray-300 font-semibold">Roblox</span><span class="font-bold text-green-400">desde $11.0</span></div>
+                        </div>
                     </div>
-                    <button onclick="selectService('Recargas de Juegos Online')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">
-                        Consultar Precios
-                    </button>
+                    <button onclick="selectService('Recargas de Juegos')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Comprar Recargas</button>
                 </div>
 
             </div>
@@ -717,7 +699,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Testimonio 1 -->
                 <div class="testimonial-card rounded-3xl p-8 relative">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-xl font-bold text-white">JM</div>
@@ -728,12 +709,9 @@
                     </div>
                     <div class="star-rating flex mb-4">★★★★★</div>
                     <p class="text-gray-300 text-sm leading-relaxed">"Excelente servicio, llevo 6 meses con Netflix y Disney+ y nunca he tenido problemas. La entrega fue inmediata y el soporte responde súper rápido. 100% recomendado."</p>
-                    <div class="mt-4 pt-4 border-t border-white/10">
-                        <span class="text-xs text-blue-400 uppercase tracking-wider">Netflix + Disney+</span>
-                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/10"><span class="text-xs text-blue-400 uppercase tracking-wider">Netflix + Disney+</span></div>
                 </div>
 
-                <!-- Testimonio 2 -->
                 <div class="testimonial-card rounded-3xl p-8 relative">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-400 flex items-center justify-center text-xl font-bold text-white">AR</div>
@@ -744,12 +722,9 @@
                     </div>
                     <div class="star-rating flex mb-4">★★★★★</div>
                     <p class="text-gray-300 text-sm leading-relaxed">"Los mejores precios que he encontrado. Pago por Pago Móvil y en 5 minutos ya tenía mi cuenta de Spotify funcionando. Muy confiables y seguros."</p>
-                    <div class="mt-4 pt-4 border-t border-white/10">
-                        <span class="text-xs text-blue-400 uppercase tracking-wider">Spotify Premium</span>
-                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/10"><span class="text-xs text-blue-400 uppercase tracking-wider">Spotify Premium</span></div>
                 </div>
 
-                <!-- Testimonio 3 -->
                 <div class="testimonial-card rounded-3xl p-8 relative">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-400 flex items-center justify-center text-xl font-bold text-white">CP</div>
@@ -760,12 +735,9 @@
                     </div>
                     <div class="star-rating flex mb-4">★★★★★</div>
                     <p class="text-gray-300 text-sm leading-relaxed">"Tenía dudas al principio pero me arriesgué y no me arrepiento. Tengo Paramount+ para ver la NFL y funciona perfecto en mi Smart TV. Gran atención al cliente."</p>
-                    <div class="mt-4 pt-4 border-t border-white/10">
-                        <span class="text-xs text-blue-400 uppercase tracking-wider">Paramount+</span>
-                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/10"><span class="text-xs text-blue-400 uppercase tracking-wider">Paramount+</span></div>
                 </div>
 
-                <!-- Testimonio 4 -->
                 <div class="testimonial-card rounded-3xl p-8 relative">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-teal-400 flex items-center justify-center text-xl font-bold text-white">LG</div>
@@ -776,12 +748,9 @@
                     </div>
                     <div class="star-rating flex mb-4">★★★★★</div>
                     <p class="text-gray-300 text-sm leading-relaxed">"Soy fan del anime y Crunchyroll aquí es súper barato. La calidad es HD real y los subtítulos llegan al día siguiente del estreno en Japón. ¡Increíble servicio!"</p>
-                    <div class="mt-4 pt-4 border-t border-white/10">
-                        <span class="text-xs text-blue-400 uppercase tracking-wider">Crunchyroll</span>
-                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/10"><span class="text-xs text-blue-400 uppercase tracking-wider">Crunchyroll</span></div>
                 </div>
 
-                <!-- Testimonio 5 -->
                 <div class="testimonial-card rounded-3xl p-8 relative">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-yellow-400 flex items-center justify-center text-xl font-bold text-white">DH</div>
@@ -792,12 +761,9 @@
                     </div>
                     <div class="star-rating flex mb-4">★★★★★</div>
                     <p class="text-gray-300 text-sm leading-relaxed">"Compré el combo completo para toda mi familia. Ahorramos muchísimo dinero comparado con pagar cada servicio por separado. Todo funciona sin problemas."</p>
-                    <div class="mt-4 pt-4 border-t border-white/10">
-                        <span class="text-xs text-blue-400 uppercase tracking-wider">Combo Completo</span>
-                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/10"><span class="text-xs text-blue-400 uppercase tracking-wider">Combo Completo</span></div>
                 </div>
 
-                <!-- Testimonio 6 -->
                 <div class="testimonial-card rounded-3xl p-8 relative">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-400 flex items-center justify-center text-xl font-bold text-white">MS</div>
@@ -808,9 +774,7 @@
                     </div>
                     <div class="star-rating flex mb-4">★★★★★</div>
                     <p class="text-gray-300 text-sm leading-relaxed">"Tuve un problema técnico un domingo y me respondieron en minutos. Me cambiaron la cuenta sin costo y sin complicaciones. Eso es servicio al cliente de verdad."</p>
-                    <div class="mt-4 pt-4 border-t border-white/10">
-                        <span class="text-xs text-blue-400 uppercase tracking-wider">Prime Video</span>
-                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/10"><span class="text-xs text-blue-400 uppercase tracking-wider">Prime Video</span></div>
                 </div>
             </div>
         </div>
@@ -828,45 +792,37 @@
                 <div class="faq-item rounded-2xl overflow-hidden transition-all">
                     <button class="faq-trigger w-full px-6 py-5 flex justify-between items-center text-left hover:bg-white/5 transition-colors">
                         <span class="font-bold text-lg text-white">¿Las cuentas son privadas o compartidas?</span>
-                        <svg class="faq-icon w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
+                        <svg class="faq-icon w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="faq-content px-6 pb-5">
-                        <p class="text-gray-400 leading-relaxed">Son cuentas compartidas de forma segura. Cada usuario tiene su perfil privado con acceso exclusivo a su historial y listas. Respetamos los límites de cada plataforma para garantizar estabilidad.</p>
+                        <p class="text-gray-400 leading-relaxed">Contamos con ambas opciones (1 Pantalla o Cuenta Completa). Si compras 1 pantalla, tendrás tu perfil privado de forma segura. Respetamos los límites de cada plataforma para garantizar estabilidad.</p>
                     </div>
                 </div>
 
                 <div class="faq-item rounded-2xl overflow-hidden transition-all">
                     <button class="faq-trigger w-full px-6 py-5 flex justify-between items-center text-left hover:bg-white/5 transition-colors">
                         <span class="font-bold text-lg text-white">¿Qué pasa si la cuenta deja de funcionar?</span>
-                        <svg class="faq-icon w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
+                        <svg class="faq-icon w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="faq-content px-6 pb-5">
-                        <p class="text-gray-400 leading-relaxed">Tienes garantía de reposición durante todo el período contratado. Si ocurre cualquier problema, te proporcionamos nuevas credenciales inmediatamente sin costo adicional. Soporte 24/7.</p>
+                        <p class="text-gray-400 leading-relaxed">Tienes garantía de reposición durante todo el período contratado. Si ocurre cualquier problema, te proporcionamos nuevas credenciales inmediatamente sin costo adicional. Soporte activo por WhatsApp.</p>
                     </div>
                 </div>
 
                 <div class="faq-item rounded-2xl overflow-hidden transition-all">
                     <button class="faq-trigger w-full px-6 py-5 flex justify-between items-center text-left hover:bg-white/5 transition-colors">
                         <span class="font-bold text-lg text-white">¿Puedo usarla en mi TV Smart o celular?</span>
-                        <svg class="faq-icon w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
+                        <svg class="faq-icon w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="faq-content px-6 pb-5">
-                        <p class="text-gray-400 leading-relaxed">Sí, funciona en Smart TV, celulares, tablets, computadoras y consolas. Cada plan tiene su límite de pantallas/dispositivos según lo indicado en la descripción del servicio.</p>
+                        <p class="text-gray-400 leading-relaxed">Sí, funciona en Smart TV, celulares, tablets, computadoras y consolas. Cada plan tiene su límite de pantallas/dispositivos según lo indicado en la descripción de cada plataforma.</p>
                     </div>
                 </div>
 
                 <div class="faq-item rounded-2xl overflow-hidden transition-all">
                     <button class="faq-trigger w-full px-6 py-5 flex justify-between items-center text-left hover:bg-white/5 transition-colors">
                         <span class="font-bold text-lg text-white">¿Aceptan pagos desde Venezuela?</span>
-                        <svg class="faq-icon w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
+                        <svg class="faq-icon w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="faq-content px-6 pb-5">
                         <p class="text-gray-400 leading-relaxed">Sí, aceptamos Pago Móvil (todos los bancos), transferencias en bolívares, Binance USDT, Zinli, Wally y PayPal a la tasa del día.</p>
@@ -955,7 +911,7 @@
             
             selectedService.textContent = serviceName;
             
-            const message = encodeURIComponent(`¡Hola Newonvzla! Deseo consultar disponibilidad y precio de: *${serviceName}*. ¿Cuáles son los métodos de pago en Bs o USDT disponibles?`);
+            const message = encodeURIComponent(`¡Hola Newonvzla! Vengo de tu página web y deseo consultar sobre el plan de *${serviceName}* que vi en la lista de precios. ¿Qué métodos de pago aceptas hoy?`);
             waLink.href = `https://wa.link/q1jdcs?text=${message}`;
             
             modal.classList.remove('hidden');
