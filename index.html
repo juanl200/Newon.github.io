@@ -83,42 +83,29 @@
         .icon-games { background: linear-gradient(135deg, #ec4899, #be185d); }
 
         .category-tab.active { background: #2563eb !important; color: white !important; border-color: #60a5fa !important; box-shadow: 0 0 15px rgba(37, 99, 235, 0.4); }
+        
+        /* Modales y Carrito */
         .modal-backdrop { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); }
         .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease-in-out; background: rgba(5, 5, 8, 0.98); backdrop-filter: blur(20px); }
         .mobile-menu.active { transform: translateX(0); }
         
+        .cart-sidebar { transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(10, 15, 29, 0.98); backdrop-filter: blur(20px); }
+        .cart-sidebar.active { transform: translateX(0); }
+
         .price-list-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .price-list-item:last-child { border-bottom: none; }
+        
+        select option { background: #0f172a; color: white; }
 
-        /* Testimonios y FAQ */
-        .testimonial-card {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.3s ease;
-        }
-        .testimonial-card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-5px);
-        }
+        /* Estilos Extras (FAQ y Testimonios) */
+        .testimonial-card { background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%); border: 1px solid rgba(59, 130, 246, 0.2); transition: all 0.3s ease; }
+        .testimonial-card:hover { border-color: rgba(59, 130, 246, 0.5); transform: translateY(-5px); }
         .star-rating { color: #fbbf24; letter-spacing: 2px; }
 
-        .faq-item {
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            background: rgba(15, 23, 42, 0.6);
-            transition: all 0.3s;
-        }
-        .faq-item.active {
-            border-color: rgba(59, 130, 246, 0.5);
-            background: rgba(30, 41, 59, 0.85);
-        }
-        .faq-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease-out;
-        }
+        .faq-item { border: 1px solid rgba(59, 130, 246, 0.2); background: rgba(15, 23, 42, 0.6); transition: all 0.3s; }
+        .faq-item.active { border-color: rgba(59, 130, 246, 0.5); background: rgba(30, 41, 59, 0.85); }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease-out; }
         .faq-item.active .faq-content { max-height: 300px; }
-        .faq-icon { transition: transform 0.3s; }
         .faq-item.active .faq-icon { transform: rotate(180deg); }
     </style>
 </head>
@@ -129,7 +116,8 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
-    <nav class="fixed w-full z-50 top-0 transition-all duration-300 border-b border-white/5 bg-black/40 backdrop-blur-md" id="navbar">
+    <!-- Navegación -->
+    <nav class="fixed w-full z-40 top-0 transition-all duration-300 border-b border-white/5 bg-black/40 backdrop-blur-md" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="cursor-pointer" onclick="window.scrollTo(0,0)">
@@ -138,19 +126,27 @@
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#servicios" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium tracking-wide uppercase">Catálogo y Precios</a>
+                    <a href="#servicios" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium tracking-wide uppercase">Catálogo</a>
                     <a href="#testimonios" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium tracking-wide uppercase">Testimonios</a>
-                    <a href="#faq" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium tracking-wide uppercase">Dudas</a>
-                    <a href="https://wa.link/q1jdcs" target="_blank" class="btn-brand px-6 py-2.5 rounded-full text-white font-bold text-sm tracking-wide uppercase">
-                        WhatsApp Directo
-                    </a>
+                    
+                    <!-- Botón del Carrito en Navbar -->
+                    <button onclick="toggleCart()" class="relative btn-brand px-6 py-2.5 rounded-full text-white font-bold text-sm tracking-wide uppercase flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span>Mi Pedido</span>
+                        <span id="cartBadgeNav" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-black shadow-lg">0</span>
+                    </button>
                 </div>
 
-                <button class="md:hidden text-white p-2" id="mobile-menu-btn" aria-label="Abrir Menú">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+                <!-- Menú Móvil Botones -->
+                <div class="md:hidden flex items-center gap-4">
+                    <button onclick="toggleCart()" class="relative text-white p-2">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span id="cartBadgeMobile" class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-black">0</span>
+                    </button>
+                    <button class="text-white p-2" id="mobile-menu-btn" aria-label="Abrir Menú">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -162,10 +158,45 @@
                 <a href="#servicios" class="text-gray-300 hover:text-blue-400 text-lg font-medium mobile-link">Catálogo de Precios</a>
                 <a href="#testimonios" class="text-gray-300 hover:text-blue-400 text-lg font-medium mobile-link">Testimonios</a>
                 <a href="#faq" class="text-gray-300 hover:text-blue-400 text-lg font-medium mobile-link">Preguntas Frecuentes</a>
-                <a href="https://wa.link/q1jdcs" target="_blank" class="btn-brand px-6 py-4 rounded-full text-white font-bold text-center">Hablar con Soporte</a>
+                <button onclick="toggleCart(); document.getElementById('mobile-menu').classList.remove('active');" class="btn-brand px-6 py-4 rounded-full text-white font-bold text-center">Ver mi Pedido</button>
             </div>
         </div>
     </nav>
+
+    <!-- Botón Flotante Carrito -->
+    <button onclick="toggleCart()" class="fixed bottom-6 right-6 z-40 btn-brand w-16 h-16 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(37,99,235,0.5)] md:hidden">
+        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        <span id="cartBadgeFloat" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-black shadow-lg border-2 border-[#050508]">0</span>
+    </button>
+
+    <!-- Sidebar del Carrito -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] hidden" onclick="toggleCart()"></div>
+    <div id="cartSidebar" class="cart-sidebar fixed top-0 right-0 w-full sm:w-[400px] h-full z-[70] border-l border-blue-500/20 flex flex-col shadow-2xl">
+        <div class="p-6 border-b border-white/10 flex justify-between items-center bg-blue-900/10">
+            <h2 class="font-brand text-2xl font-bold text-white flex items-center gap-2">
+                <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                Tu Pedido
+            </h2>
+            <button onclick="toggleCart()" class="text-gray-400 hover:text-white bg-white/5 p-2 rounded-lg transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+
+        <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <div class="text-center text-gray-500 mt-10">Tu carrito está vacío.<br>Selecciona un servicio para comenzar.</div>
+        </div>
+
+        <div class="p-6 border-t border-white/10 bg-[#0a0f1d]">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-gray-400 text-lg">Total a pagar:</span>
+                <span class="text-3xl font-brand font-black text-green-400" id="cartTotalDisplay">$0.00</span>
+            </div>
+            <button onclick="checkoutWhatsApp()" class="w-full btn-brand py-4 rounded-xl text-white font-bold text-lg tracking-wide uppercase flex items-center justify-center gap-3">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Enviar a WhatsApp
+            </button>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="relative min-h-[90vh] flex items-center justify-center pt-24 px-4 overflow-hidden">
@@ -188,7 +219,7 @@
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="#servicios" class="btn-brand px-10 py-4 rounded-full text-white font-bold text-base flex items-center space-x-3 shadow-2xl shadow-blue-500/30 w-full sm:w-auto justify-center">
-                    <span>Ver Precios y Planes</span>
+                    <span>Añadir al Carrito</span>
                 </a>
             </div>
         </div>
@@ -199,7 +230,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-10">
                 <h2 class="font-brand text-3xl md:text-5xl font-black mb-4 tracking-tight">Lista de <span class="gradient-text">Precios</span></h2>
-                <p class="text-gray-400 text-base max-w-2xl mx-auto">Elige la categoría para ver las opciones disponibles y sus costos exactos.</p>
+                <p class="text-gray-400 text-base max-w-2xl mx-auto">Elige la categoría, revisa los costos y añade los servicios a tu carrito.</p>
                 <div class="vzla-accent mt-4"></div>
             </div>
 
@@ -228,21 +259,12 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <div><span class="text-gray-300 block">1 Pantalla</span><span class="text-xs text-gray-500">Compartida / Con código (viaje)</span></div>
-                                <span class="font-bold text-green-400 text-lg">$3.5</span>
-                            </div>
-                            <div class="price-list-item">
-                                <div><span class="text-gray-300 block">1 Pantalla</span><span class="text-xs text-gray-500">No pide código</span></div>
-                                <span class="font-bold text-green-400 text-lg">$5.3</span>
-                            </div>
-                            <div class="price-list-item">
-                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
-                                <span class="font-bold text-green-400 text-lg">$13.5</span>
-                            </div>
+                            <div class="price-list-item"><div><span class="text-gray-300 block">1 Pantalla (Con código)</span></div><span class="font-bold text-green-400 text-lg">$3.5</span></div>
+                            <div class="price-list-item"><div><span class="text-gray-300 block">1 Pantalla (Sin código)</span></div><span class="font-bold text-green-400 text-lg">$5.3</span></div>
+                            <div class="price-list-item"><span class="text-gray-300 font-semibold">Cuenta Completa</span><span class="font-bold text-green-400 text-lg">$13.5</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Netflix')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Netflix</button>
+                    <button onclick="openProductModal('netflix')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 2. Disney+ Premium -->
@@ -256,21 +278,12 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <span class="text-gray-300">1 Pantalla</span>
-                                <span class="font-bold text-green-400 text-lg">$3.3</span>
-                            </div>
-                            <div class="price-list-item">
-                                <span class="text-gray-300">Cuenta Completa</span>
-                                <span class="font-bold text-green-400 text-lg">$14.0</span>
-                            </div>
-                            <div class="price-list-item">
-                                <div><span class="text-gray-300 font-semibold block">Cuenta Completa</span><span class="text-xs text-blue-300">A tu correo</span></div>
-                                <span class="font-bold text-green-400 text-lg">$17.0</span>
-                            </div>
+                            <div class="price-list-item"><span class="text-gray-300">1 Pantalla</span><span class="font-bold text-green-400 text-lg">$3.3</span></div>
+                            <div class="price-list-item"><span class="text-gray-300">Cuenta Completa</span><span class="font-bold text-green-400 text-lg">$14.0</span></div>
+                            <div class="price-list-item"><div><span class="text-gray-300 block">Completa (A tu correo)</span></div><span class="font-bold text-green-400 text-lg">$17.0</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Disney+ Premium')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Disney+</button>
+                    <button onclick="openProductModal('disney')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 3. Prime Video -->
@@ -284,21 +297,12 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <span class="text-gray-300">1 Pantalla</span>
-                                <span class="font-bold text-green-400 text-lg">$1.4</span>
-                            </div>
-                            <div class="price-list-item">
-                                <span class="text-gray-300">Cuenta Completa</span>
-                                <span class="font-bold text-green-400 text-lg">$4.0</span>
-                            </div>
-                            <div class="price-list-item">
-                                <div><span class="text-gray-300 font-semibold block">Cuenta Completa</span><span class="text-xs text-cyan-300">Renovable</span></div>
-                                <span class="font-bold text-green-400 text-lg">$5.0</span>
-                            </div>
+                            <div class="price-list-item"><span class="text-gray-300">1 Pantalla</span><span class="font-bold text-green-400 text-lg">$1.4</span></div>
+                            <div class="price-list-item"><span class="text-gray-300">Cuenta Completa</span><span class="font-bold text-green-400 text-lg">$4.0</span></div>
+                            <div class="price-list-item"><div><span class="text-gray-300 block">Completa (Renovable)</span></div><span class="font-bold text-green-400 text-lg">$5.0</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Prime Video')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Prime Video</button>
+                    <button onclick="openProductModal('prime')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 4. Vix -->
@@ -312,17 +316,11 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <span class="text-gray-300">1 Pantalla</span>
-                                <span class="font-bold text-green-400 text-lg">$1.0</span>
-                            </div>
-                            <div class="price-list-item">
-                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
-                                <span class="font-bold text-green-400 text-lg">$4.0</span>
-                            </div>
+                            <div class="price-list-item"><span class="text-gray-300">1 Pantalla</span><span class="font-bold text-green-400 text-lg">$1.0</span></div>
+                            <div class="price-list-item"><span class="text-gray-300 font-semibold">Cuenta Completa</span><span class="font-bold text-green-400 text-lg">$4.0</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Vix+')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Vix+</button>
+                    <button onclick="openProductModal('vix')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 5. Paramount+ -->
@@ -336,17 +334,11 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <span class="text-gray-300">1 Pantalla</span>
-                                <span class="font-bold text-green-400 text-lg">$2.0</span>
-                            </div>
-                            <div class="price-list-item">
-                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
-                                <span class="font-bold text-green-400 text-lg">$7.0</span>
-                            </div>
+                            <div class="price-list-item"><span class="text-gray-300">1 Pantalla</span><span class="font-bold text-green-400 text-lg">$2.0</span></div>
+                            <div class="price-list-item"><span class="text-gray-300 font-semibold">Cuenta Completa</span><span class="font-bold text-green-400 text-lg">$7.0</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Paramount+')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Paramount+</button>
+                    <button onclick="openProductModal('paramount')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 6. Crunchyroll -->
@@ -360,17 +352,11 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <span class="text-gray-300">1 Pantalla</span>
-                                <span class="font-bold text-green-400 text-lg">$1.2</span>
-                            </div>
-                            <div class="price-list-item">
-                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
-                                <span class="font-bold text-green-400 text-lg">$4.5</span>
-                            </div>
+                            <div class="price-list-item"><span class="text-gray-300">1 Pantalla</span><span class="font-bold text-green-400 text-lg">$1.2</span></div>
+                            <div class="price-list-item"><span class="text-gray-300 font-semibold">Cuenta Completa</span><span class="font-bold text-green-400 text-lg">$4.5</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Crunchyroll')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Crunchyroll</button>
+                    <button onclick="openProductModal('crunchyroll')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 7. HBO Max -->
@@ -393,7 +379,7 @@
                             <div class="price-list-item"><span class="text-gray-300">Cuenta Completa</span><span class="font-bold text-green-400">$9.0</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('HBO Max')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar HBO Max</button>
+                    <button onclick="openProductModal('hbomax')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 8. Apple TV -->
@@ -407,17 +393,11 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <span class="text-gray-300">1 Pantalla</span>
-                                <span class="font-bold text-green-400 text-lg">$2.5</span>
-                            </div>
-                            <div class="price-list-item">
-                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
-                                <span class="font-bold text-green-400 text-lg">$4.5</span>
-                            </div>
+                            <div class="price-list-item"><span class="text-gray-300">1 Pantalla</span><span class="font-bold text-green-400 text-lg">$2.5</span></div>
+                            <div class="price-list-item"><span class="text-gray-300 font-semibold">Cuenta Completa</span><span class="font-bold text-green-400 text-lg">$4.5</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Apple TV+')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Apple TV</button>
+                    <button onclick="openProductModal('appletv')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 9. Viki Rakuten -->
@@ -431,17 +411,11 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <span class="text-gray-300">1 Pantalla</span>
-                                <span class="font-bold text-green-400 text-lg">$2.7</span>
-                            </div>
-                            <div class="price-list-item">
-                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
-                                <span class="font-bold text-green-400 text-lg">$5.0</span>
-                            </div>
+                            <div class="price-list-item"><span class="text-gray-300">1 Pantalla</span><span class="font-bold text-green-400 text-lg">$2.7</span></div>
+                            <div class="price-list-item"><span class="text-gray-300 font-semibold">Cuenta Completa</span><span class="font-bold text-green-400 text-lg">$5.0</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Viki Rakuten')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Viki</button>
+                    <button onclick="openProductModal('viki')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 10. Universal+ -->
@@ -455,17 +429,11 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <span class="text-gray-300">1 Pantalla</span>
-                                <span class="font-bold text-green-400 text-lg">$1.8</span>
-                            </div>
-                            <div class="price-list-item">
-                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
-                                <span class="font-bold text-green-400 text-lg">$5.0</span>
-                            </div>
+                            <div class="price-list-item"><span class="text-gray-300">1 Pantalla</span><span class="font-bold text-green-400 text-lg">$1.8</span></div>
+                            <div class="price-list-item"><span class="text-gray-300 font-semibold">Cuenta Completa</span><span class="font-bold text-green-400 text-lg">$5.0</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Universal+')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Universal+</button>
+                    <button onclick="openProductModal('universal')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 11. Canva Pro -->
@@ -479,17 +447,11 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <div><span class="text-gray-300 block">Individual 1 Mes</span></div>
-                                <span class="font-bold text-green-400 text-lg">$1.5</span>
-                            </div>
-                            <div class="price-list-item">
-                                <div><span class="text-gray-300 font-semibold block">Individual 3 Meses</span></div>
-                                <span class="font-bold text-green-400 text-lg">$3.5</span>
-                            </div>
+                            <div class="price-list-item"><div><span class="text-gray-300 block">Individual 1 Mes</span></div><span class="font-bold text-green-400 text-lg">$1.5</span></div>
+                            <div class="price-list-item"><div><span class="text-gray-300 font-semibold block">Individual 3 Meses</span></div><span class="font-bold text-green-400 text-lg">$3.5</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Canva Pro')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Canva Pro</button>
+                    <button onclick="openProductModal('canva')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 12. CapCut -->
@@ -503,13 +465,10 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <span class="text-gray-300 font-semibold">Cuenta Completa</span>
-                                <span class="font-bold text-green-400 text-lg">$5.3</span>
-                            </div>
+                            <div class="price-list-item"><span class="text-gray-300 font-semibold">Cuenta Completa</span><span class="font-bold text-green-400 text-lg">$5.3</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('CapCut Pro')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar CapCut</button>
+                    <button onclick="openProductModal('capcut')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 13. Spotify Premium -->
@@ -523,13 +482,10 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <div><span class="text-gray-300 font-semibold block">1 Mes</span><span class="text-xs text-green-300">A tu correo personal</span></div>
-                                <span class="font-bold text-green-400 text-lg">$4.8</span>
-                            </div>
+                            <div class="price-list-item"><div><span class="text-gray-300 font-semibold block">1 Mes</span><span class="text-xs text-green-300">A tu correo personal</span></div><span class="font-bold text-green-400 text-lg">$4.8</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Spotify Premium')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Spotify</button>
+                    <button onclick="openProductModal('spotify')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 14. YouTube Premium -->
@@ -543,21 +499,12 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <div><span class="text-gray-300 block">Cuenta Completa 1 Mes</span><span class="text-xs text-red-300">A tu correo</span></div>
-                                <span class="font-bold text-green-400 text-lg">$3.5</span>
-                            </div>
-                            <div class="price-list-item">
-                                <div><span class="text-gray-300 block">Cuentas Viejas 1 Mes</span><span class="text-xs text-red-300">A tu correo</span></div>
-                                <span class="font-bold text-green-400 text-lg">$5.0</span>
-                            </div>
-                            <div class="price-list-item">
-                                <div><span class="text-gray-300 font-semibold block">Cuenta Completa 3 Meses</span><span class="text-xs text-red-300">A tu correo</span></div>
-                                <span class="font-bold text-green-400 text-lg">$9.0</span>
-                            </div>
+                            <div class="price-list-item"><div><span class="text-gray-300 block">Completa 1 Mes</span></div><span class="font-bold text-green-400 text-lg">$3.5</span></div>
+                            <div class="price-list-item"><div><span class="text-gray-300 block">Viejas 1 Mes</span></div><span class="font-bold text-green-400 text-lg">$5.0</span></div>
+                            <div class="price-list-item"><div><span class="text-gray-300 font-semibold block">Completa 3 Meses</span></div><span class="font-bold text-green-400 text-lg">$9.0</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('YouTube Premium')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar YouTube</button>
+                    <button onclick="openProductModal('youtube')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 15. NewonIPTV -->
@@ -571,13 +518,10 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <div><span class="text-gray-300 font-semibold block">Para 3 Dispositivos</span><span class="text-xs text-gray-400">Canales, Películas y Estrenos</span></div>
-                                <span class="font-bold text-green-400 text-lg">$5.0</span>
-                            </div>
+                            <div class="price-list-item"><div><span class="text-gray-300 font-semibold block">Para 3 Dispositivos</span></div><span class="font-bold text-green-400 text-lg">$5.0</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('NewonIPTV')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar NewonIPTV</button>
+                    <button onclick="openProductModal('newoniptv')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 16. Telelatino -->
@@ -591,13 +535,10 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <div><span class="text-gray-300 font-semibold block">Para 3 Dispositivos</span><span class="text-xs text-gray-400">Canales, Películas y Series</span></div>
-                                <span class="font-bold text-green-400 text-lg">$4.5</span>
-                            </div>
+                            <div class="price-list-item"><div><span class="text-gray-300 font-semibold block">Para 3 Dispositivos</span></div><span class="font-bold text-green-400 text-lg">$4.5</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Telelatino')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Telelatino</button>
+                    <button onclick="openProductModal('telelatino')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 17. FlujoTV -->
@@ -611,17 +552,11 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <span class="text-gray-300">Para 1 Dispositivo</span>
-                                <span class="font-bold text-green-400 text-lg">$3.8</span>
-                            </div>
-                            <div class="price-list-item">
-                                <div><span class="text-gray-300 font-semibold block">Para 3 Dispositivos</span><span class="text-xs text-gray-400">Pelis, Series y Contenido +18</span></div>
-                                <span class="font-bold text-green-400 text-lg">$8.0</span>
-                            </div>
+                            <div class="price-list-item"><span class="text-gray-300">Para 1 Dispositivo</span><span class="font-bold text-green-400 text-lg">$3.8</span></div>
+                            <div class="price-list-item"><div><span class="text-gray-300 font-semibold block">Para 3 Dispositivos</span></div><span class="font-bold text-green-400 text-lg">$8.0</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('FlujoTV')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar FlujoTV</button>
+                    <button onclick="openProductModal('flujotv')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 18. Surfshark VPN -->
@@ -635,13 +570,10 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <span class="text-gray-300 font-semibold">Para 2 Dispositivos</span>
-                                <span class="font-bold text-green-400 text-lg">$3.5</span>
-                            </div>
+                            <div class="price-list-item"><span class="text-gray-300 font-semibold">Para 2 Dispositivos</span><span class="font-bold text-green-400 text-lg">$3.5</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Surfshark VPN')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Solicitar Surfshark</button>
+                    <button onclick="openProductModal('surfshark')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Plan</button>
                 </div>
 
                 <!-- 19. NordVPN -->
@@ -655,16 +587,13 @@
                             </div>
                         </div>
                         <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-sm mb-6">
-                            <div class="price-list-item">
-                                <span class="text-gray-300 font-semibold">Para 5 Dispositivos</span>
-                                <span class="font-bold text-blue-300 text-sm uppercase">PREGUNTAR</span>
-                            </div>
+                            <div class="price-list-item"><span class="text-gray-300 font-semibold">Para 5 Dispositivos</span><span class="font-bold text-blue-300 text-sm uppercase">PREGUNTAR</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('NordVPN')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Consultar NordVPN</button>
+                    <a href="https://wa.me/584120000000?text=Hola,%20deseo%20consultar%20el%20precio%20de%20NordVPN." target="_blank" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg text-center block uppercase tracking-wider">Consultar Precio</a>
                 </div>
 
-                <!-- 20. Recargas de Juegos Online -->
+                <!-- 20. Recargas de Juegos -->
                 <div class="service-item metallic-card rounded-3xl p-6 flex flex-col justify-between" data-category="juegos">
                     <div>
                         <div class="flex items-center mb-5">
@@ -682,106 +611,74 @@
                             <div class="price-list-item"><span class="text-gray-300 font-semibold">Roblox</span><span class="font-bold text-green-400">desde $11.0</span></div>
                         </div>
                     </div>
-                    <button onclick="selectService('Recargas de Juegos')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider hover:border-blue-500/50 transition-all">Comprar Recargas</button>
+                    <button onclick="openProductModal('juegos')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-sm transition-all shadow-lg">+ Añadir Recarga</button>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Clientes Satisfechos (Testimonios Visibles) -->
-    <section id="testimonios" class="py-24 px-4 relative bg-blue-950/10 border-t border-blue-500/10">
+    <!-- Modal para Seleccionar Plan y Agregar al Carrito -->
+    <div id="productModal" class="fixed inset-0 modal-backdrop z-[70] hidden flex items-center justify-center p-4">
+        <div class="metallic-card rounded-3xl p-8 max-w-sm w-full transform scale-95 opacity-0 transition-all duration-300 border-blue-500/30" id="productModalContent">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold font-brand text-white" id="modalServiceName">Servicio</h3>
+                <button onclick="closeProductModal()" class="text-gray-400 hover:text-white bg-white/5 p-2 rounded-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <div class="space-y-5">
+                <div>
+                    <label class="block text-xs text-gray-400 uppercase tracking-wider mb-2 font-bold">1. Selecciona el Plan</label>
+                    <select id="planSelect" onchange="updateModalPrice()" class="w-full bg-[#0a0f1d] border border-white/20 text-white rounded-xl p-4 appearance-none outline-none focus:border-blue-500 font-medium"></select>
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-400 uppercase tracking-wider mb-2 font-bold">2. Cantidad</label>
+                    <div class="flex items-center justify-between bg-[#0a0f1d] border border-white/20 rounded-xl p-2">
+                        <button onclick="changeQty(-1)" class="w-10 h-10 rounded-lg bg-white/5 text-white hover:bg-white/10 font-bold text-xl flex items-center justify-center">-</button>
+                        <span id="modalQty" class="text-xl font-bold text-white">1</span>
+                        <button onclick="changeQty(1)" class="w-10 h-10 rounded-lg bg-white/5 text-white hover:bg-white/10 font-bold text-xl flex items-center justify-center">+</button>
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-white/10 flex justify-between items-center mb-2">
+                    <span class="text-gray-300">Subtotal:</span>
+                    <span id="modalSubtotal" class="text-2xl font-black text-green-400 font-brand">$0.00</span>
+                </div>
+                <button onclick="confirmAddToCart()" class="w-full btn-brand py-4 rounded-xl text-white font-bold text-sm tracking-wide uppercase shadow-lg">Agregar al Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="py-24 px-4 relative bg-blue-950/10 border-t border-blue-500/10 z-10">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="font-brand text-4xl md:text-5xl font-black mb-4 tracking-tight">Clientes <span class="gradient-text">Satisfechos</span></h2>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Lo que dicen nuestros clientes en Venezuela sobre Newonvzla</p>
                 <div class="vzla-accent mt-6"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="testimonial-card rounded-3xl p-8 relative">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-xl font-bold text-white">JM</div>
-                        <div class="ml-4">
-                            <h4 class="text-white font-bold">José Martínez</h4>
-                            <p class="text-gray-400 text-sm">Caracas, Venezuela</p>
-                        </div>
-                    </div>
-                    <div class="star-rating flex mb-4">★★★★★</div>
-                    <p class="text-gray-300 text-sm leading-relaxed">"Excelente servicio, llevo 6 meses con Netflix y Disney+ y nunca he tenido problemas. La entrega fue inmediata y el soporte responde súper rápido. 100% recomendado."</p>
-                    <div class="mt-4 pt-4 border-t border-white/10"><span class="text-xs text-blue-400 uppercase tracking-wider">Netflix + Disney+</span></div>
+                <div class="testimonial-card rounded-3xl p-8">
+                    <div class="flex items-center mb-4"><div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-xl font-bold text-white">JM</div><div class="ml-4"><h4 class="text-white font-bold">José Martínez</h4><p class="text-gray-400 text-sm">Caracas, VZLA</p></div></div>
+                    <div class="star-rating mb-4">★★★★★</div>
+                    <p class="text-gray-300 text-sm leading-relaxed">"Excelente servicio, llevo 6 meses con Netflix y Disney+ y nunca he tenido problemas. 100% recomendado."</p>
                 </div>
-
-                <div class="testimonial-card rounded-3xl p-8 relative">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-400 flex items-center justify-center text-xl font-bold text-white">AR</div>
-                        <div class="ml-4">
-                            <h4 class="text-white font-bold">Ana Rodríguez</h4>
-                            <p class="text-gray-400 text-sm">Valencia, Venezuela</p>
-                        </div>
-                    </div>
-                    <div class="star-rating flex mb-4">★★★★★</div>
-                    <p class="text-gray-300 text-sm leading-relaxed">"Los mejores precios que he encontrado. Pago por Pago Móvil y en 5 minutos ya tenía mi cuenta de Spotify funcionando. Muy confiables y seguros."</p>
-                    <div class="mt-4 pt-4 border-t border-white/10"><span class="text-xs text-blue-400 uppercase tracking-wider">Spotify Premium</span></div>
+                <div class="testimonial-card rounded-3xl p-8">
+                    <div class="flex items-center mb-4"><div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-400 flex items-center justify-center text-xl font-bold text-white">AR</div><div class="ml-4"><h4 class="text-white font-bold">Ana Rodríguez</h4><p class="text-gray-400 text-sm">Valencia, VZLA</p></div></div>
+                    <div class="star-rating mb-4">★★★★★</div>
+                    <p class="text-gray-300 text-sm leading-relaxed">"Los mejores precios que he encontrado. Pago por Pago Móvil y en 5 minutos ya tenía mi cuenta de Spotify funcionando."</p>
                 </div>
-
-                <div class="testimonial-card rounded-3xl p-8 relative">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-400 flex items-center justify-center text-xl font-bold text-white">CP</div>
-                        <div class="ml-4">
-                            <h4 class="text-white font-bold">Carlos Pérez</h4>
-                            <p class="text-gray-400 text-sm">Maracaibo, Venezuela</p>
-                        </div>
-                    </div>
-                    <div class="star-rating flex mb-4">★★★★★</div>
-                    <p class="text-gray-300 text-sm leading-relaxed">"Tenía dudas al principio pero me arriesgué y no me arrepiento. Tengo Paramount+ para ver la NFL y funciona perfecto en mi Smart TV. Gran atención al cliente."</p>
-                    <div class="mt-4 pt-4 border-t border-white/10"><span class="text-xs text-blue-400 uppercase tracking-wider">Paramount+</span></div>
-                </div>
-
-                <div class="testimonial-card rounded-3xl p-8 relative">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-teal-400 flex items-center justify-center text-xl font-bold text-white">LG</div>
-                        <div class="ml-4">
-                            <h4 class="text-white font-bold">Laura Gómez</h4>
-                            <p class="text-gray-400 text-sm">Barquisimeto, Venezuela</p>
-                        </div>
-                    </div>
-                    <div class="star-rating flex mb-4">★★★★★</div>
-                    <p class="text-gray-300 text-sm leading-relaxed">"Soy fan del anime y Crunchyroll aquí es súper barato. La calidad es HD real y los subtítulos llegan al día siguiente del estreno en Japón. ¡Increíble servicio!"</p>
-                    <div class="mt-4 pt-4 border-t border-white/10"><span class="text-xs text-blue-400 uppercase tracking-wider">Crunchyroll</span></div>
-                </div>
-
-                <div class="testimonial-card rounded-3xl p-8 relative">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-yellow-400 flex items-center justify-center text-xl font-bold text-white">DH</div>
-                        <div class="ml-4">
-                            <h4 class="text-white font-bold">Daniel Hernández</h4>
-                            <p class="text-gray-400 text-sm">Mérida, Venezuela</p>
-                        </div>
-                    </div>
-                    <div class="star-rating flex mb-4">★★★★★</div>
-                    <p class="text-gray-300 text-sm leading-relaxed">"Compré el combo completo para toda mi familia. Ahorramos muchísimo dinero comparado con pagar cada servicio por separado. Todo funciona sin problemas."</p>
-                    <div class="mt-4 pt-4 border-t border-white/10"><span class="text-xs text-blue-400 uppercase tracking-wider">Combo Completo</span></div>
-                </div>
-
-                <div class="testimonial-card rounded-3xl p-8 relative">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-400 flex items-center justify-center text-xl font-bold text-white">MS</div>
-                        <div class="ml-4">
-                            <h4 class="text-white font-bold">María Silva</h4>
-                            <p class="text-gray-400 text-sm">San Cristóbal, Venezuela</p>
-                        </div>
-                    </div>
-                    <div class="star-rating flex mb-4">★★★★★</div>
-                    <p class="text-gray-300 text-sm leading-relaxed">"Tuve un problema técnico un domingo y me respondieron en minutos. Me cambiaron la cuenta sin costo y sin complicaciones. Eso es servicio al cliente de verdad."</p>
-                    <div class="mt-4 pt-4 border-t border-white/10"><span class="text-xs text-blue-400 uppercase tracking-wider">Prime Video</span></div>
+                <div class="testimonial-card rounded-3xl p-8">
+                    <div class="flex items-center mb-4"><div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-400 flex items-center justify-center text-xl font-bold text-white">CP</div><div class="ml-4"><h4 class="text-white font-bold">Carlos Pérez</h4><p class="text-gray-400 text-sm">Maracaibo, VZLA</p></div></div>
+                    <div class="star-rating mb-4">★★★★★</div>
+                    <p class="text-gray-300 text-sm leading-relaxed">"Uso Magis TV para ver fútbol en vivo y no se cae para nada. Es la mejor inversión que he hecho para mi Smart TV."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="py-24 px-4">
+    <!-- FAQ -->
+    <section id="faq" class="py-24 px-4 z-10 relative">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="font-brand text-4xl md:text-5xl font-black mb-4 tracking-tight">Preguntas <span class="gradient-text">Frecuentes</span></h2>
@@ -791,153 +688,203 @@
             <div class="space-y-4">
                 <div class="faq-item rounded-2xl overflow-hidden transition-all">
                     <button class="faq-trigger w-full px-6 py-5 flex justify-between items-center text-left hover:bg-white/5 transition-colors">
-                        <span class="font-bold text-lg text-white">¿Las cuentas son privadas o compartidas?</span>
+                        <span class="font-bold text-lg text-white">¿Las cuentas tienen garantía?</span>
                         <svg class="faq-icon w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div class="faq-content px-6 pb-5">
-                        <p class="text-gray-400 leading-relaxed">Contamos con ambas opciones (1 Pantalla o Cuenta Completa). Si compras 1 pantalla, tendrás tu perfil privado de forma segura. Respetamos los límites de cada plataforma para garantizar estabilidad.</p>
-                    </div>
+                    <div class="faq-content px-6 pb-5"><p class="text-gray-400 leading-relaxed">Sí, absolutamente todos nuestros servicios cuentan con garantía completa durante el tiempo contratado. Si se presenta algún inconveniente, se soluciona o reemplaza de inmediato.</p></div>
                 </div>
-
                 <div class="faq-item rounded-2xl overflow-hidden transition-all">
                     <button class="faq-trigger w-full px-6 py-5 flex justify-between items-center text-left hover:bg-white/5 transition-colors">
-                        <span class="font-bold text-lg text-white">¿Qué pasa si la cuenta deja de funcionar?</span>
+                        <span class="font-bold text-lg text-white">¿Cuáles son los métodos de pago aceptados?</span>
                         <svg class="faq-icon w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div class="faq-content px-6 pb-5">
-                        <p class="text-gray-400 leading-relaxed">Tienes garantía de reposición durante todo el período contratado. Si ocurre cualquier problema, te proporcionamos nuevas credenciales inmediatamente sin costo adicional. Soporte activo por WhatsApp.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-trigger w-full px-6 py-5 flex justify-between items-center text-left hover:bg-white/5 transition-colors">
-                        <span class="font-bold text-lg text-white">¿Puedo usarla en mi TV Smart o celular?</span>
-                        <svg class="faq-icon w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="faq-content px-6 pb-5">
-                        <p class="text-gray-400 leading-relaxed">Sí, funciona en Smart TV, celulares, tablets, computadoras y consolas. Cada plan tiene su límite de pantallas/dispositivos según lo indicado en la descripción de cada plataforma.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-trigger w-full px-6 py-5 flex justify-between items-center text-left hover:bg-white/5 transition-colors">
-                        <span class="font-bold text-lg text-white">¿Aceptan pagos desde Venezuela?</span>
-                        <svg class="faq-icon w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="faq-content px-6 pb-5">
-                        <p class="text-gray-400 leading-relaxed">Sí, aceptamos Pago Móvil (todos los bancos), transferencias en bolívares, Binance USDT, Zinli, Wally y PayPal a la tasa del día.</p>
-                    </div>
+                    <div class="faq-content px-6 pb-5"><p class="text-gray-400 leading-relaxed">Aceptamos Pago Móvil (a tasa del día), Binance USDT, transferencias bancarias, Zinli y PayPal.</p></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-blue-500/20 py-12 px-4 bg-black/60 text-center">
+    <footer class="border-t border-blue-500/20 py-12 px-4 bg-black/60 text-center relative z-10">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
                 <span class="font-brand text-xl font-bold metallic-text tracking-wider block">NEWONVZLA</span>
                 <span class="text-xs text-blue-400 tracking-widest uppercase">Streaming & Cuentas Digitales</span>
             </div>
-            
-            <div class="text-gray-500 text-sm">
-                © 2026 Newonvzla. Todos los derechos reservados. San Cristóbal, Venezuela 🇻🇪
-            </div>
+            <div class="text-gray-500 text-sm">© 2026 Newonvzla. Venezuela 🇻🇪</div>
         </div>
     </footer>
 
-    <!-- Modal Interactivo de Compra -->
-    <div id="serviceModal" class="fixed inset-0 modal-backdrop z-50 hidden flex items-center justify-center p-4">
-        <div class="metallic-card rounded-3xl p-8 max-w-md w-full transform scale-95 opacity-0 transition-all duration-300 border-blue-500/30" id="modalContent">
-            <div class="flex justify-between items-center mb-5">
-                <h3 class="text-xl font-bold font-brand text-white">Solicitar Servicio</h3>
-                <button onclick="closeModal()" class="text-gray-400 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-            
-            <div class="mb-6 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20">
-                <p class="text-gray-400 text-xs uppercase font-semibold">Has seleccionado:</p>
-                <p id="selectedService" class="text-xl font-bold text-blue-400 font-brand mt-1"></p>
-            </div>
-
-            <div class="space-y-3">
-                <a href="#" id="waLink" target="_blank" class="flex items-center justify-center w-full py-3.5 rounded-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold transition-all shadow-lg shadow-green-500/20 text-sm uppercase tracking-wider">
-                    Continuar a WhatsApp
-                </a>
-                <button onclick="closeModal()" class="w-full py-3 rounded-xl border border-white/20 text-white font-semibold hover:bg-white/5 transition-all text-xs uppercase">
-                    Volver al Catálogo
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripts Esenciales -->
+    <!-- LÓGICA E-COMMERCE / CARRITO (Vanilla JS) -->
     <script>
-        // Generador de partículas
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 35; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.animationDuration = (12 + Math.random() * 8) + 's';
-            particlesContainer.appendChild(particle);
-        }
+        const servicesDB = {
+            'netflix': { name: 'Netflix', plans: [ { id: 'n1', name: '1 Pantalla (Con código)', price: 3.5 }, { id: 'n2', name: '1 Pantalla (Sin código)', price: 5.3 }, { id: 'n3', name: 'Cuenta Completa', price: 13.5 } ] },
+            'disney': { name: 'Disney+ Premium', plans: [ { id: 'd1', name: '1 Pantalla', price: 3.3 }, { id: 'd2', name: 'Cuenta Completa', price: 14.0 }, { id: 'd3', name: 'Completa (A tu correo)', price: 17.0 } ] },
+            'prime': { name: 'Prime Video', plans: [ { id: 'pv1', name: '1 Pantalla', price: 1.4 }, { id: 'pv2', name: 'Cuenta Completa', price: 4.0 }, { id: 'pv3', name: 'Completa (Renovable)', price: 5.0 } ] },
+            'vix': { name: 'Vix+', plans: [ { id: 'vx1', name: '1 Pantalla', price: 1.0 }, { id: 'vx2', name: 'Cuenta Completa', price: 4.0 } ] },
+            'paramount': { name: 'Paramount+', plans: [ { id: 'pm1', name: '1 Pantalla', price: 2.0 }, { id: 'pm2', name: 'Cuenta Completa', price: 7.0 } ] },
+            'crunchyroll': { name: 'Crunchyroll', plans: [ { id: 'cr1', name: '1 Pantalla', price: 1.2 }, { id: 'cr2', name: 'Cuenta Completa', price: 4.5 } ] },
+            'hbomax': { name: 'HBO Max', plans: [ { id: 'hb1', name: 'Standard - 1 Pantalla', price: 2.0 }, { id: 'hb2', name: 'Standard - Completa', price: 5.5 }, { id: 'hb3', name: 'Platinum - 1 Pantalla', price: 2.5 }, { id: 'hb4', name: 'Platinum - Completa', price: 9.0 } ] },
+            'appletv': { name: 'Apple TV+', plans: [ { id: 'ap1', name: '1 Pantalla', price: 2.5 }, { id: 'ap2', name: 'Cuenta Completa', price: 4.5 } ] },
+            'viki': { name: 'Viki Rakuten', plans: [ { id: 'vk1', name: '1 Pantalla', price: 2.7 }, { id: 'vk2', name: 'Cuenta Completa', price: 5.0 } ] },
+            'universal': { name: 'Universal+', plans: [ { id: 'un1', name: '1 Pantalla', price: 1.8 }, { id: 'un2', name: 'Cuenta Completa', price: 5.0 } ] },
+            'canva': { name: 'Canva Pro', plans: [ { id: 'cv1', name: 'Individual 1 Mes', price: 1.5 }, { id: 'cv2', name: 'Individual 3 Meses', price: 3.5 } ] },
+            'capcut': { name: 'CapCut Pro', plans: [ { id: 'cp1', name: 'Cuenta Completa', price: 5.3 } ] },
+            'spotify': { name: 'Spotify Premium', plans: [ { id: 'sp1', name: '1 Mes (A tu correo)', price: 4.8 } ] },
+            'youtube': { name: 'YouTube Premium', plans: [ { id: 'yt1', name: 'Completa 1 Mes', price: 3.5 }, { id: 'yt2', name: 'Cuentas Viejas 1 Mes', price: 5.0 }, { id: 'yt3', name: 'Completa 3 Meses', price: 9.0 } ] },
+            'newoniptv': { name: 'NewonIPTV', plans: [ { id: 'iptv1', name: 'Para 3 Dispositivos', price: 5.0 } ] },
+            'telelatino': { name: 'Telelatino', plans: [ { id: 'tl1', name: 'Para 3 Dispositivos', price: 4.5 } ] },
+            'flujotv': { name: 'FlujoTV', plans: [ { id: 'ftv1', name: 'Para 1 Dispositivo', price: 3.8 }, { id: 'ftv2', name: 'Para 3 Dispositivos', price: 8.0 } ] },
+            'surfshark': { name: 'Surfshark VPN', plans: [ { id: 'ss1', name: 'Para 2 Dispositivos', price: 3.5 } ] },
+            'juegos': { name: 'Recargas de Juegos', plans: [ { id: 'jg1', name: 'FreeFire', price: 1.4 }, { id: 'jg2', name: 'Call of Duty Mobile', price: 1.75 }, { id: 'jg3', name: 'League of Legends', price: 5.5 }, { id: 'jg4', name: 'VALORANT', price: 5.6 }, { id: 'jg5', name: 'Roblox', price: 11.0 } ] }
+        };
 
-        // Filtro de Categorías
-        function filterServices(category, btnElement) {
-            const items = document.querySelectorAll('.service-item');
-            const tabs = document.querySelectorAll('.category-tab');
+        let cart = [];
+        let currentModalService = null;
+        let currentModalQty = 1;
 
-            tabs.forEach(tab => tab.classList.remove('active'));
-            btnElement.classList.add('active');
+        function openProductModal(serviceKey) {
+            const service = servicesDB[serviceKey];
+            currentModalService = service;
+            currentModalQty = 1;
+            document.getElementById('modalServiceName').textContent = service.name;
+            document.getElementById('modalQty').textContent = currentModalQty;
 
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
+            const planSelect = document.getElementById('planSelect');
+            planSelect.innerHTML = '';
+            service.plans.forEach((plan, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = `${plan.name} - $${plan.price.toFixed(2)}`;
+                planSelect.appendChild(option);
             });
-        }
 
-        // Modal de WhatsApp
-        function selectService(serviceName) {
-            const modal = document.getElementById('serviceModal');
-            const modalContent = document.getElementById('modalContent');
-            const selectedService = document.getElementById('selectedService');
-            const waLink = document.getElementById('waLink');
-            
-            selectedService.textContent = serviceName;
-            
-            const message = encodeURIComponent(`¡Hola Newonvzla! Vengo de tu página web y deseo consultar sobre el plan de *${serviceName}* que vi en la lista de precios. ¿Qué métodos de pago aceptas hoy?`);
-            waLink.href = `https://wa.link/q1jdcs?text=${message}`;
-            
+            updateModalPrice();
+            const modal = document.getElementById('productModal');
+            const content = document.getElementById('productModalContent');
             modal.classList.remove('hidden');
             setTimeout(() => {
-                modalContent.classList.remove('scale-95', 'opacity-0');
-                modalContent.classList.add('scale-100', 'opacity-100');
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
             }, 10);
         }
 
-        function closeModal() {
-            const modal = document.getElementById('serviceModal');
-            const modalContent = document.getElementById('modalContent');
-            
-            modalContent.classList.remove('scale-100', 'opacity-100');
-            modalContent.classList.add('scale-95', 'opacity-0');
-            
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 250);
+        function closeProductModal() {
+            const modal = document.getElementById('productModal');
+            const content = document.getElementById('productModalContent');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 250);
         }
 
-        document.getElementById('serviceModal').addEventListener('click', (e) => {
-            if (e.target.id === 'serviceModal') closeModal();
-        });
+        function changeQty(amount) {
+            if (currentModalQty + amount >= 1) {
+                currentModalQty += amount;
+                document.getElementById('modalQty').textContent = currentModalQty;
+                updateModalPrice();
+            }
+        }
 
-        // FAQ 
+        function updateModalPrice() {
+            const planIndex = document.getElementById('planSelect').value;
+            const price = currentModalService.plans[planIndex].price;
+            document.getElementById('modalSubtotal').textContent = `$${(price * currentModalQty).toFixed(2)}`;
+        }
+
+        function confirmAddToCart() {
+            const planIndex = document.getElementById('planSelect').value;
+            const selectedPlan = currentModalService.plans[planIndex];
+            const existing = cart.findIndex(item => item.id === selectedPlan.id);
+            
+            if (existing !== -1) {
+                cart[existing].qty += currentModalQty;
+            } else {
+                cart.push({
+                    id: selectedPlan.id, serviceName: currentModalService.name,
+                    planName: selectedPlan.name, price: selectedPlan.price, qty: currentModalQty
+                });
+            }
+            updateCartUI();
+            closeProductModal();
+            toggleCart(); 
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('cartOverlay');
+            if (sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                overlay.classList.add('hidden');
+            } else {
+                sidebar.classList.add('active');
+                overlay.classList.remove('hidden');
+            }
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const badges = [document.getElementById('cartBadgeNav'), document.getElementById('cartBadgeMobile'), document.getElementById('cartBadgeFloat')];
+            let total = 0; let totalItems = 0;
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="text-center text-gray-500 mt-10">Tu carrito está vacío.<br>Selecciona un servicio.</div>';
+            } else {
+                cart.forEach((item, index) => {
+                    total += item.price * item.qty;
+                    totalItems += item.qty;
+                    container.innerHTML += `
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10 flex justify-between items-center">
+                            <div>
+                                <div class="font-bold text-white">${item.serviceName}</div>
+                                <div class="text-xs text-blue-300 mb-2">${item.planName}</div>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-gray-400 text-sm">Cant: ${item.qty}</span>
+                                    <span class="font-bold text-green-400">$${(item.price * item.qty).toFixed(2)}</span>
+                                </div>
+                            </div>
+                            <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-300 bg-red-500/10 p-2 rounded-lg">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            </button>
+                        </div>`;
+                });
+            }
+            document.getElementById('cartTotalDisplay').textContent = `$${total.toFixed(2)}`;
+            badges.forEach(b => b.textContent = totalItems);
+        }
+
+        function removeFromCart(index) { cart.splice(index, 1); updateCartUI(); }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) return alert("Tu carrito está vacío. Añade servicios primero.");
+            
+            // ⚠️ IMPORTANTE: COLOCA AQUÍ TU NÚMERO DE WHATSAPP REAL (Con código 58, sin el '+')
+            const numeroWhatsApp = "584247245026";
+            
+            let text = `¡Hola *NEWONVZLA*! 🚀\nDeseo procesar mi pedido desde la página web. Aquí está el detalle:\n\n`;
+            text += `📋 *RESUMEN DE MI PEDIDO:*\n--------------------------------------\n`;
+            let total = 0;
+            cart.forEach(item => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                text += `🛒 *${item.qty}x ${item.serviceName}*\n   ↳ Plan: ${item.planName}\n`;
+                if (item.qty > 1) text += `   ↳ P. Unitario: $${item.price.toFixed(2)}\n`;
+                text += `   ↳ Subtotal: $${subtotal.toFixed(2)}\n\n`;
+            });
+            text += `--------------------------------------\n💰 *TOTAL A PAGAR: $${total.toFixed(2)} USD*\n--------------------------------------\n\n`;
+            text += `💳 ¿Me indicas los datos para el pago (Pago Móvil / USDT)? Quedo atento/a.`;
+            
+            window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        function filterServices(category, btn) {
+            document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.service-item').forEach(item => {
+                item.style.display = (category === 'all' || item.getAttribute('data-category') === category) ? 'flex' : 'none';
+            });
+        }
+
         document.querySelectorAll('.faq-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const item = trigger.parentElement;
@@ -951,29 +898,9 @@
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const closeMenuBtn = document.getElementById('close-menu');
         const mobileMenu = document.getElementById('mobile-menu');
-
         mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
         closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('active'));
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
-        });
-
-        // Contadores
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-target'));
-            let current = 0;
-            const timer = setInterval(() => {
-                current += 1;
-                if (current >= target) {
-                    counter.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    counter.textContent = current;
-                }
-            }, 40);
-        });
+        document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('active')));
     </script>
 </body>
 </html>
-```
